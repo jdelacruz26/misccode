@@ -1,4 +1,4 @@
-# ca2xls Script
+# cad2xls Python Script
 This is a Python script for extracting parameter values from an Assembly (STEP)
 file.
 

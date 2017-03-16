@@ -31,7 +31,7 @@
 
 
 __author__ = 'Jorge De La Cruz, Carmen Castano'
-__copyright__ = 'Copyright (c) 2017 Cody Jorge De La Cruz, Carmen Castano'
+__copyright__ = 'Copyright (c) 2017 Jorge De La Cruz, Carmen Castano'
 
 __license__ = 'BSD'
 __maintainer__ = 'Jorge De La Cruz'
