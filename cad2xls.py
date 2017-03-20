@@ -41,25 +41,24 @@ import sys
 
 ## Path to FreeCAD library
 # change this by your FreeCAD library path
-sys.path.append("/usr/lib/freecad/lib")
-import FreeCAD
+sys.path.append('/usr/lib/freecad/lib')
+import FreeCAD as App
 import Import
 import xlwt
 from datetime import datetime
 
 class GetParameters:
-    file_path = ''
     def __init__(self):
         self.filePath = '/home/jdelacruz/Downloads/KonzeptB_lang090715.stp'
 
     def loadCAD(self):
         print('Starting to load the CAD file, please be patient!...')
         Import.open(self.filePath)
+        self.handler = App.ActiveDocument
+        self.parts = self.handler.Objects
         print('CAD model loaded!')
 
     def writeXls(self):
-        self.handler = App.ActiveDocument
-        self.parts = self.handler.Objects
         self.book = xlwt.Workbook()
         self.bookSheet =self.book.add_sheet('Model Parameters')
 
@@ -79,7 +78,7 @@ class GetParameters:
             self.n += 1
 
         self.book.save('data.xls')
-        print('Xls file created!')
+        print('The Xls file has been created successfully!')
 
 if __name__ == '__main__':
         data = GetParameters()
