@@ -10,8 +10,16 @@ By default, the class constructor creates an instance using a default path for t
 CAD model, this value must be changed modifying the variable **filePath** belongs to
 the instance your are dealing with.
 
+**Note:** The FreeCAD path must be changed within the code to your computer
+library path, using the variable **sys.path.append**.
+
 ---
 
 ## Dependencies
 * **FreeCAD:** https://www.freecadweb.org/
 * **xlwt:** https://github.com/python-excel/xlwt
+
+---
+## Running the code in Linux
+
+[![Running the code!](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=RIBDlxeZS7M&feature=youtu.be)
