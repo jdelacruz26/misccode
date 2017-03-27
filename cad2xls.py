@@ -44,7 +44,6 @@ import sys
 sys.path.append('/usr/lib/freecad/lib')
 import FreeCAD as App
 import Import
-import xlwt
 from datetime import datetime
 
 class GetParameters:
@@ -58,10 +57,9 @@ class GetParameters:
         self.parts = self.handler.Objects
         print('CAD model loaded!')
 
-    def writeXls(self):
-        self.book = xlwt.Workbook()
-        self.bookSheet =self.book.add_sheet('Model Parameters')
-
+    def writeTxt(self):
+        f = open('data.txt','a')
+        print >>f, 'Name \t Label'
         self.i = 0
         self.size = len(self.parts)
         self.names = range(self.size)
@@ -69,16 +67,11 @@ class GetParameters:
         for self.part in self.parts:
             self.names[self.i] = self.part.Name
             self.labels[self.i] = self.part.Label
+            print >>f, self.part.Name+"\t"+self.part.Label
             self.i += 1
+        f.close()
 
-        self.n = 0
-        for self.name in self.names:
-            self.bookSheet.write(self.n, 0, self.name)
-            self.bookSheet.write(self.n, 1, self.labels[self.n])
-            self.n += 1
-
-        self.book.save('data.xls')
-        print('The Xls file has been created successfully!')
+        print('The txt file has been created successfully!')
 
 if __name__ == '__main__':
         data = GetParameters()
