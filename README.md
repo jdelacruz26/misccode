@@ -17,8 +17,23 @@ library path, using the variable **sys.path.append**.
 
 ## Dependencies
 * **FreeCAD:** https://www.freecadweb.org/
-* **xlwt:** https://github.com/python-excel/xlwt
 
+---
+## Executing Python from CMD or Linux terminal
+* Navigate to the misccode folder.
+* Execute the following commands:
+
+```bash
+python
+```
+
+```python
+import cad2xls
+obj = cad2xls.GetParameters()
+obj.filePath = 'path_to_stp_file'
+obj.loadCAD()
+obj.writeTxt()
+```
 ---
 ## Running the code in Linux
 
