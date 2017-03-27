@@ -76,4 +76,4 @@ class GetParameters:
 if __name__ == '__main__':
         data = GetParameters()
         data.loadCAD()
-        data.writeXls()
+        data.writeTxt()
