@@ -1,27 +1,29 @@
-# cad2xls Python Script
-This is a Python script for extracting parameter values from an Assembly (STEP)
-file.
-
-The main **GetParameters** class allows the user to create new instances in order to handle
-**STEP** files. The CAD file path has to be passed using the **filePath** parameter
-belongs to the class **GetParameters**
-
-By default, the class constructor creates an instance using a default path for the
-CAD model, this value must be changed modifying the variable **filePath** belongs to
-the instance your are dealing with.
-
-**Note:** The FreeCAD path must be changed within the code to your computer
-library path, using the variable **sys.path.append**.
+# Dynamixel XH430-V210
+This is a code which is aimed to control the Dynamixel XH430-V210 motor. The operation of the motor consists in driving the motor to two specific positions without exceeding a giving torque, *open* and *closed* positions. In order to do this, a *current-based Position control* is implemented.
 
 ---
 
 ## Dependencies
-* **FreeCAD:** https://www.freecadweb.org/
+* **OpenCM9.04**
+* **OpenCM 485 EXP**
+* **OpenCM IDE:** [Robotis](http://support.robotis.com/en/techsupport_eng.htm#software/robotis_opencm.htm)
 
 ---
-## Executing Python from CMD or Linux terminal
-* Navigate to the misccode folder.
-* Execute the following commands:
+## Guide lines for driving the motor using the OpenCM 485 EXP board
+* Connect the OpenCM 485 EXP board to a 24V source.
+* Approach the Dynamixel motor's shaft to the initial position (*open position*) manually.
+* Power on the OpenCM expansion board.
+* Hold **Button1** until the blue led turns on.
+* Push **Button2** until the green led turns on and then release it in order to drive the motor to absolute initial position.
+* It is time to drive the Dynamixel!, be sure that the workbench has been already set it up. Hold **Button2** and push **Button1** until the red led turns on and then release them in order to drive the motor to *closed Position*.
+* **Warning**: Once you have finished using the system, return the motor to the initial position before powering off the motor or the OpenCM expansion board. Notice that the next time the controller is going to initialize the motor, it will drive the shaft to the absolute position taking in account only on turn.
+
+<!--![OpenCM9.0 + 485 EXP board](figure/PenCM.png){width=50%}-->
+
+<div style="text-align:center;">
+<img src="figure/PenCM.png" alt="Drawing" width= "500px"/>
+OpenCM9.0 + 485 EXP board
+</div>
 
 ```bash
 python
