@@ -18,7 +18,6 @@ This is a code aimed to control the Dynamixel XH430-V210 motor. The operation of
 1. Power on the OpenCM expansion board.
 
 1. Hold **Button1** until the blue led and the green led turn on. Now the controller will move the motor's shaft to the initial position, *open position*. Once the motor reaches the initial position, the controller will deactivate the torque.  
-<!--* Push **Button2** until the green led turns on and then release it in order to drive the motor to absolute initial position.-->
 
 1. It is time to drive the Dynamixel!, be sure that the workbench has been already set it up. Hold **Button2** until the red led and the green led turn on and then release it in order to drive the motor to the *closed Position*. As in the previous step,the controller will drive the shaft until the *maximum position* or the *maximum torque* are reached.
 
