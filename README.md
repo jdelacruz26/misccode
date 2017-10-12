@@ -44,7 +44,7 @@ The control board has three different leds which can be used in order to give a 
 
 * **Red led**:The red led turns on when the shaft is commanded to the *closed position*. Once the closed position is reached the led will still on, at least the shaft is moved from his reference position.if this occurs, the red led will start flashing.
 
-## OpenCM code
+## [OpenCM code](sketchbook/igmr_dynamixel_control/igmr_dynamixel_control.ino)
 **Initialization values** are the values that can be modified by the user. Notice that the *open_position* will be always taken as 0 degrees.  
 
 ```c
