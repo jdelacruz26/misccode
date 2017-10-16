@@ -6,8 +6,3 @@ install:
   - arduino --install-library "Adafruit SleepyDog Library,Adafruit FONA Library"
 script:
   - build_main_platforms
-notifications:
-  email:
-    - jorge.cruz.arcia@rwth-aachen.de
-    on_success: change
-    on_failure: change
