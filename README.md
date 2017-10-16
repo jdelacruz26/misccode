@@ -1,4 +1,6 @@
-# Dynamixel XH430-V210
+
+
+# Dynamixel XH430-V210 [![Build Status](https://travis-ci.org/jdelacruz26/misccode.svg?branch=dynamixel)](https://travis-ci.org/jdelacruz26/misccode)
 This is a code aimed to control the Dynamixel XH430-V210 motor. The operation of the motor consists in driving the motor to two specific positions without exceeding a giving torque, *open* and *closed* positions. In order to do this, a *current-based Position control* is used.
 
 ---

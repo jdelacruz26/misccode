@@ -7,6 +7,7 @@ install:
 script:
   - build_main_platforms
 notifications:
-  email: jorge.cruz.arcia@rwth-aachen.de
+  email:
+    - jorge.cruz.arcia@rwth-aachen.de
     on_success: change
     on_failure: change
