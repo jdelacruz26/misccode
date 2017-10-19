@@ -12,7 +12,7 @@ env:
     - TARGET=${CURRENT_DIR}/sketchbook/igmr_dynamixel_control/igmr_dynamixel_control
 
 install:
-  - sudo apt-get install arduino
+  - sudo apt-get install arduino arduino-mk
 script:
   - make clean
   - make
