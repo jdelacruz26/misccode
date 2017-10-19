@@ -1,7 +1,7 @@
 dist: trusty
 language:
   - c
-sudo: false
+sudo: required
 
 env:
   global:
@@ -10,6 +10,9 @@ env:
     - OPENCMIDE_DIR=${CURRENT_DIR}/ROBOTIS_OpenCM-v1.0.2
     - LOCAL_INO_SRCS = ${CURRENT_DIR}/sketchbook/igmr_dynamixel_control/igmr_dynamixel_control.ino
     - TARGET=${CURRENT_DIR}/sketchbook/igmr_dynamixel_control/igmr_dynamixel_control
+
+install:
+  - sudo apt-get install arduino
 script:
   - make clean
   - make
