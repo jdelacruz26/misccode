@@ -2,6 +2,14 @@ dist: trusty
 language:
   - c
 sudo: false
+
+env:
+  global:
+    - CI_SOURCE_PATH=${PWD}
+    - CURRENT_DIR=${CI_SOURCE_PATH}
+    - OPENCMIDE_DIR=${CURRENT_DIR}/ROBOTIS_OpenCM-v1.0.2
+    - LOCAL_INO_SRCS = ${CURRENT_DIR}/sketchbook/igmr_dynamixel_control/igmr_dynamixel_control.ino
+    - TARGET=${CURRENT_DIR}/sketchbook/igmr_dynamixel_control/igmr_dynamixel_control
 script:
   - make clean
   - make
