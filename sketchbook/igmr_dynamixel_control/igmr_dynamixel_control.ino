@@ -103,6 +103,52 @@ int closed_current = round(closed_current_A*1000/1.34);
 int open_current = round(open_current_A*1000/1.34);
 int profile_velocity = round(profile_velocity_rps*60/0.229);
 
+
+
+int getSensor(int a){
+  read_current_position = Dxl.readDword(MOTOR_ID, PRESENT_POS)/4095.0; // Read present position
+  torque_status = Dxl.readByte(MOTOR_ID, TORQUE_ENABLE);
+  input_voltage = Dxl.readWord(MOTOR_ID, INPUT_VOLTAGE)/10.0;
+  operating_mode = Dxl.readWord(MOTOR_ID, OPERATING_MODE);
+  current_current = Dxl.readWord(MOTOR_ID, PRESENT_CURRENT)*1.34;
+  read_goal_current = Dxl.readWord(MOTOR_ID, GOAL_CURRENT)*1.34;
+  read_goal_position = Dxl.readWord(MOTOR_ID, GOAL_POSITION)/4095.0;
+  present_temperature = Dxl.readByte(MOTOR_ID,PRESENT_TEMPERATURE);
+
+
+  delay(1000);
+  if(a==1){
+    SerialUSB.print("================================");
+    SerialUSB.print("Closed state data");
+    SerialUSB.println("================================");
+
+  }
+  if(a==0){
+    SerialUSB.print("================================");
+    SerialUSB.print("Open state data");
+    SerialUSB.println("================================");
+  }
+  SerialUSB.println("----------------");
+  SerialUSB.print("Goal Position[rev]: ");
+  SerialUSB.println(read_goal_position);
+  SerialUSB.print("Present Position[rev]: ");
+  SerialUSB.println(read_current_position);
+  SerialUSB.print("Goal Current[mA]: ");
+  SerialUSB.println(read_goal_current);
+  SerialUSB.print("Current Current[mA]: ");
+  SerialUSB.println(current_current);
+  SerialUSB.print("Torque enable status: ");
+  SerialUSB.println(torque_status);
+  SerialUSB.print("Input Voltage[V]: ");
+  SerialUSB.println(input_voltage);
+  SerialUSB.print("Temperature[C]: ");
+  SerialUSB.println(present_temperature);
+  //SerialUSB.print("Operating Mode: ");
+  //SerialUSB.println(operating_mode);
+
+  return 0;
+}
+
 void setup() {
   // Initialize the dynamixel bus:
   // Dynamixel 2.0 Baudrate -> 0: 9600, 1: 57600, 2: 115200, 3: 1Mbps
@@ -213,7 +259,7 @@ void loop(){
   if(torque_status == 1 && digitalRead(BLUE_LED)==1){
     digitalWrite(BLUE_LED, LOW);
   }
-  if(current_position > (open_position+pos_threshold) && open_status==1 || open_out_of_range == 1){
+  if((current_position > (open_position+pos_threshold) && open_status==1 )|| open_out_of_range == 1){
     green_led_state = digitalRead(GREEN_LED);
     if(green_led_state == HIGH){
       digitalWrite(GREEN_LED, LOW);
@@ -224,7 +270,7 @@ void loop(){
     open_out_of_range = 1;
     closed_out_of_range = 0;
   }
-  if(((closed_position-pos_threshold)> current_position || current_position > (closed_position+pos_threshold)) && closed_status ==1 || closed_out_of_range == 1){
+  if((((closed_position-pos_threshold)> current_position || current_position > (closed_position+pos_threshold)) && closed_status ==1)|| closed_out_of_range == 1){
     red_led_state = digitalRead(RED_LED);
     if(red_led_state == HIGH){
       digitalWrite(RED_LED, LOW);
@@ -235,50 +281,6 @@ void loop(){
     open_out_of_range = 0;
     closed_out_of_range = 1;
   }
-  
+
   getSensor(3);
-}
-
-int getSensor(int a){
-  read_current_position = Dxl.readDword(MOTOR_ID, PRESENT_POS)/4095.0; // Read present position
-  torque_status = Dxl.readByte(MOTOR_ID, TORQUE_ENABLE);
-  input_voltage = Dxl.readWord(MOTOR_ID, INPUT_VOLTAGE)/10.0;
-  operating_mode = Dxl.readWord(MOTOR_ID, OPERATING_MODE);
-  current_current = Dxl.readWord(MOTOR_ID, PRESENT_CURRENT)*1.34;
-  read_goal_current = Dxl.readWord(MOTOR_ID, GOAL_CURRENT)*1.34;
-  read_goal_position = Dxl.readWord(MOTOR_ID, GOAL_POSITION)/4095.0;
-  present_temperature = Dxl.readByte(MOTOR_ID,PRESENT_TEMPERATURE);
-
-
-  delay(1000);
-  if(a==1){
-    SerialUSB.print("================================");
-    SerialUSB.print("Closed state data");
-    SerialUSB.println("================================");
-
-  }
-  if(a==0){
-    SerialUSB.print("================================");
-    SerialUSB.print("Open state data");
-    SerialUSB.println("================================");
-  }
-  SerialUSB.println("----------------");
-  SerialUSB.print("Goal Position[rev]: ");
-  SerialUSB.println(read_goal_position);
-  SerialUSB.print("Present Position[rev]: ");
-  SerialUSB.println(read_current_position);
-  SerialUSB.print("Goal Current[mA]: ");
-  SerialUSB.println(read_goal_current);
-  SerialUSB.print("Current Current[mA]: ");
-  SerialUSB.println(current_current);
-  SerialUSB.print("Torque enable status: ");
-  SerialUSB.println(torque_status);
-  SerialUSB.print("Input Voltage[V]: ");
-  SerialUSB.println(input_voltage);
-  SerialUSB.print("Temperature[C]: ");
-  SerialUSB.println(present_temperature);
-  //SerialUSB.print("Operating Mode: ");
-  //SerialUSB.println(operating_mode);
-
-  return 0;
 }
