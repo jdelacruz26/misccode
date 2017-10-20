@@ -104,7 +104,7 @@ int open_current = round(open_current_A*1000/1.34);
 int profile_velocity = round(profile_velocity_rps*60/0.229);
 
 
-
+/************************ Function definition *******************************/
 int getSensor(int a){
   read_current_position = Dxl.readDword(MOTOR_ID, PRESENT_POS)/4095.0; // Read present position
   torque_status = Dxl.readByte(MOTOR_ID, TORQUE_ENABLE);
@@ -149,6 +149,9 @@ int getSensor(int a){
   return 0;
 }
 
+
+/************************* setup before starting *****************************/
+
 void setup() {
   // Initialize the dynamixel bus:
   // Dynamixel 2.0 Baudrate -> 0: 9600, 1: 57600, 2: 115200, 3: 1Mbps
@@ -158,8 +161,7 @@ void setup() {
   Dxl.writeDword(MOTOR_ID, PROFILE_VELOCITY, profile_velocity);
   Dxl.writeDword(MOTOR_ID, MAXIMUM_POSITION, 4095);
   Dxl.writeDword(MOTOR_ID, HOMING_OFFSET, 0);
-  Dxl.writeByte(MOTOR_ID, OPERATING_MODE, 5);//Operating mode is set to current-based Position Control mode up.
-  //Dxl.writeByte(MOTOR_ID,TORQUE_ENABLE,1);//Torque must be enable in order to drive the motor.
+  Dxl.writeByte(MOTOR_ID, OPERATING_MODE, 5);//Operating mode is setup to current-based Position Control mode.
 
   pinMode(BUTTON1, INPUT);
   pinMode(BUTTON2, INPUT);
@@ -173,7 +175,8 @@ void setup() {
   delay(1000);
 }
 
-//Dxl.writeDword(MOTOR_ID, GOAL_POSITION, goal_position);
+/************************ Main loop *****************************************/
+
 void loop(){
   current_position = Dxl.readDword(MOTOR_ID, PRESENT_POS);
   torque_status = Dxl.readByte(MOTOR_ID, TORQUE_ENABLE);
