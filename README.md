@@ -59,7 +59,7 @@ int pos_threshold = 57; //~5°
 ```
 
 
-## How to compile and upload the code in the Board
+## How to compile and upload the code
 
 First at all, clone the *dynamixel* branch of this repository and execute the IDE,
 
@@ -90,6 +90,6 @@ after this, you have to look up for the file you want to compile, in our case th
 Fig. 3: **Compile** and **Upload** buttons.
 </div>
 
-That's it!, now you are be able to drive the motor using the two pushing Button shown on Fig. 1.
+That's it!, now you should be able to drive the motor using the two pushing Buttons shown on Fig. 1.
 
 ---
