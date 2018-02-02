@@ -1,9 +1,10 @@
 # =============================================================================
 #                                   Variables
 # =============================================================================
+#export PATH=$HOME/bin:/usr/local/bin:$PATH
 export TERM="xterm-256color"
 export LANG="en_US.UTF-8"
-#export ZSH=/home/your-user/.oh-my-zsh
+export ZSH=/home/jorgedelacruz/.oh-my-zsh
 # powerlevel9k prompt theme
 #DEFAULT_USER=$USER
 ZSH_THEME="powerlevel9k/powerlevel9k"
@@ -85,13 +86,13 @@ POWERLEVEL9K_VCS_MODIFIED_FOREGROUND="black"
 POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND="yellow"
 POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND="black"
 
-POWERLEVEL9K_DIR_HOME_BACKGROUND="cyan"
+POWERLEVEL9K_DIR_HOME_BACKGROUND="blue"
 POWERLEVEL9K_DIR_HOME_FOREGROUND="black"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="cyan"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND="blue"
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="black"
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="cyan"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="black"
-POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="cyan"
+POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_BACKGROUND="red"
 POWERLEVEL9K_DIR_WRITABLE_FORBIDDEN_FOREGROUND="black"
 
 POWERLEVEL9K_ROOT_INDICATOR_BACKGROUND="235"
@@ -127,10 +128,10 @@ POWERLEVEL9K_USER_ROOT_FOREGROUND="red"
 POWERLEVEL9K_USER_ICON="\uF415" # 
 POWERLEVEL9K_ROOT_ICON="\u26A1" # ⚡
 
-POWERLEVEL9K_HOST_LOCAL_BACKGROUND="235"
+POWERLEVEL9K_HOST_LOCAL_BACKGROUND="black"
 POWERLEVEL9K_HOST_LOCAL_FOREGROUND="cyan"
-POWERLEVEL9K_HOST_REMOTE_BACKGROUND="235"
-POWERLEVEL9K_HOST_REMOTE_FOREGROUND="cyan"
+POWERLEVEL9K_HOST_REMOTE_BACKGROUND="black"
+POWERLEVEL9K_HOST_REMOTE_FOREGROUND="red"
 
 POWERLEVEL9K_HOST_ICON="\uF109" # 
 POWERLEVEL9K_HOST_ICON_FOREGROUND="red"
@@ -138,7 +139,7 @@ POWERLEVEL9K_HOST_ICON_BACKGROUND="black"
 POWERLEVEL9K_SSH_ICON="\uF489"  # 
 
 POWERLEVEL9K_OS_ICON_BACKGROUND="235"
-POWERLEVEL9K_OS_ICON_FOREGROUND="cyan"
+POWERLEVEL9K_OS_ICON_FOREGROUND="white"
 
 # zsh-syntax-highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -303,6 +304,7 @@ else
 fi
 
 # Directory management
+alias ls="ls"
 alias la="ls -a"
 alias ll="ls -l"
 alias lal="ls -al"
@@ -429,9 +431,12 @@ bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
 # Source local customizations.
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
+#[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+#[[ -f ~/.zshrc.alias ]] && source ~/.zshrc.alias
 
 # vim: ft=zsh
-source /opt/ros/kinetic/setup.zsh
-source ~/catkin_ws/devel/setup.zsh
+export ROS_IP=10.211.55.2
+export ROS_MASTER_URI=http://10.211.55.14:11311
+export GAZEBO_IP=10.211.55.2
+export GAZEBO_MASTER_URI=10.211.55.14:33390
+source /opt/ros/lunar/setup.zsh
